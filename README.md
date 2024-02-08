@@ -22,9 +22,15 @@ To achieve this, we must:
 * Implement the database design in MySQL Workbench by creating the database and its tables and populating the tables with the sample data provided. 
 
 * Generate SQL JOIN queries to prove the validity of database design by proving that data can be retrieved from multiple tables in a single query.
+  
+## Data Exploration
+The organization provided the data greenspot.csv, containing records of its business activities, in a Microsoft Excel spreadsheet. 
+
+![gree](https://github.com/Piux6/Greenspot-Grocer-Project/assets/128375363/80c162e4-71a1-4cae-882a-445f51dd06d9)
+
 
 ## Data Preparation/cleaning: 
-The data greespot.csv was imported to MySQL Workbench and the following data preparation/cleaning steps were performed
+The data greenspot.csv was imported to MySQL Workbench and the following data preparation/cleaning steps were performed
 * Merging columns: columns having same information were merged for uniformity.
 ```sql
 ALTER TABLE greenspot 
@@ -95,7 +101,10 @@ RENAME COLUMN `purchase date` TO `Purchase_date1`,
 RENAME COLUMN `date sold` TO `date_sold`,
 RENAME COLUMN `item type` TO `item_type`;
 ```
-* Other data preparation/cleaning steps involves using the RIGHT() and LEFT() in Excel to further split the vendor column to form the vendor_state, vendor_city and postcode columns.
+* Other data preparation/cleaning steps involves using the TRIM(), RIGHT() and LEFT() in Excel to further split the vendor column to form the vendor_state, vendor_city and postcode columns.
+*Data Preparation/cleaning resultant Dataset
+![GREENCSV](https://github.com/Piux6/Greenspot-Grocer-Project/assets/128375363/cfdb1dba-3036-4d67-82bc-8bd017ae2e48)
+
 
 ## Database Model/Design
 The next step is to build a database model in MySQL. We begin with identifying tables(entities) then we add keys (Primary/foreign) to be able to establish the relationships among the tables. 
