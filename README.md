@@ -97,3 +97,10 @@ RENAME COLUMN `item type` TO `item_type`;
 ```
 * Other data preparation/cleaning steps involves using the RIGHT() and LEFT() in Excel to further split the vendor column to form the vendor_state, vendor_city and postcode columns.
 
+## Database Model/Design
+The next step is to build a database model in MySQL. We begin with identifying tables(entities) then we add keys (Primary/foreign) to be able to establish the relationships among the tables. 
+
+
+
+
+
