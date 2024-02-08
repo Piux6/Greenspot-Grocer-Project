@@ -23,5 +23,24 @@ To achieve this, we must:
 
 * Generate SQL JOIN queries to prove the validity of your database design by proving that data can be retrieved from multiple tables in a single query.
 
-
-
+## Data Preparation/cleaning: 
+The data greespot.csv was imported to MySQL Workbench and the following data preparation/cleaning steps were performed
+* Merging columns: columns having same information were merged for uniformity.
+```sql
+ALTER TABLE greenspot 
+ADD COLUMN purchase_date1 VARCHAR(15);
+UPDATE greenspot 
+      SET purchase_date1 = CONCAT(Purchase_date,' ', date_sold);
+ALTER TABLE greenspot 
+DROP COLUMN purchase_date, 
+DROP COLUMN date_sold;
+```
+* Renaming columns
+```sql
+ALTER TABLE greenspot 
+RENAME COLUMN `Item num` TO `item_no`,
+RENAME COLUMN `quantity on-hand` TO `quantity_in_stock`,
+RENAME COLUMN `purchase date` TO `Purchase_date1`,
+RENAME COLUMN `date sold` TO `date_sold`,
+RENAME COLUMN `item type` TO `item_type`;
+```
