@@ -21,7 +21,7 @@ To achieve this, we must:
 
 * Implement the database design in MySQL Workbench by creating the database and its tables and populating the tables with the sample data provided. 
 
-* Generate SQL JOIN queries to prove the validity of your database design by proving that data can be retrieved from multiple tables in a single query.
+* Generate SQL JOIN queries to prove the validity of database design by proving that data can be retrieved from multiple tables in a single query.
 
 ## Data Preparation/cleaning: 
 The data greespot.csv was imported to MySQL Workbench and the following data preparation/cleaning steps were performed
@@ -100,7 +100,22 @@ RENAME COLUMN `item type` TO `item_type`;
 ## Database Model/Design
 The next step is to build a database model in MySQL. We begin with identifying tables(entities) then we add keys (Primary/foreign) to be able to establish the relationships among the tables. 
 
+## Implemeting Database Designs/models
+After finalizing the database model, the next phase involves its implemetation by filling its tables with data sourced from the previously cleaned and prepared greenspot.csv file. Following this, querying the database is essential to extract table information, ensuring its integrity and validity.
 
-
-
+## SQL Join Query
+This is to prove the validity of the database design by proving that data can be retrieved from multiple tables in a single query.
+* Top 5 purchased items, their date of purchase, cost of goods sold and quantity in stock.
+```sql
+SELECT I.item_name, PI.purchase_date,I.price * PI.quantity AS cost_of_goods_sold, 
+	   IV.quantity_in_stock FROM items I
+JOIN vendor V
+    ON I.item_id = V.vendor_id
+JOIN purchase_info PI
+    ON I.item_id = PI.purchase_id
+JOIN inventory_locations IV
+    ON I.item_id = IV.location_id
+ORDER BY cost_of_goods_sold DESC
+LIMIT 5
+```
 
