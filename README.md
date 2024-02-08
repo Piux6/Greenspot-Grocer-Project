@@ -100,6 +100,11 @@ RENAME COLUMN `item type` TO `item_type`;
 ## Database Model/Design
 The next step is to build a database model in MySQL. We begin with identifying tables(entities) then we add keys (Primary/foreign) to be able to establish the relationships among the tables. 
 
+![erd](https://github.com/Piux6/Greenspot-Grocer-Project/assets/128375363/d1b83025-b5f5-4df5-a6a5-21e4c6d7dde6)
+
+
+
+
 ## Implemeting Database Designs/models
 After finalizing the database model, the next phase involves its implemetation by filling its tables with data sourced from the previously cleaned and prepared greenspot.csv file. Following this, querying the database is essential to extract table information, ensuring its integrity and validity.
 
@@ -118,4 +123,8 @@ JOIN inventory_locations IV
 ORDER BY cost_of_goods_sold DESC
 LIMIT 5
 ```
+![top5](https://github.com/Piux6/Greenspot-Grocer-Project/assets/128375363/4d49f1b1-7312-4334-bbb4-9de1218d5e19)
+
+
+
 
