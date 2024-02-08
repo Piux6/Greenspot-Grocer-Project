@@ -108,6 +108,14 @@ The next step is to build a database model in MySQL. We begin with identifying t
 ## Implemeting Database Designs/models
 After finalizing the database model, the next phase involves its implemetation by filling its tables with data sourced from the previously cleaned and prepared greenspot.csv file. Following this, querying the database is essential to extract table information, ensuring its integrity and validity.
 
+![purchase_info](https://github.com/Piux6/Greenspot-Grocer-Project/assets/128375363/0a114a87-71fd-4b74-b80d-3f662724f52b)
+![vendor](https://github.com/Piux6/Greenspot-Grocer-Project/assets/128375363/48c0bc1d-7b0b-46ea-be37-4e0144cd37c7)
+![inventory_locations](https://github.com/Piux6/Greenspot-Grocer-Project/assets/128375363/95021344-86a4-4741-93de-4793af1d3913)
+![items](https://github.com/Piux6/Greenspot-Grocer-Project/assets/128375363/201d5e74-a848-4e5f-8e06-ba3c2317aab1)
+
+
+
+
 ## SQL Join Query
 This is to prove the validity of the database design by proving that data can be retrieved from multiple tables in a single query.
 * Top 5 purchased items, their date of purchase, cost of goods sold and quantity in stock.
