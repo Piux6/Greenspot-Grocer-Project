@@ -95,3 +95,5 @@ RENAME COLUMN `purchase date` TO `Purchase_date1`,
 RENAME COLUMN `date sold` TO `date_sold`,
 RENAME COLUMN `item type` TO `item_type`;
 ```
+* Other data preparation/cleaning steps involves using the RIGHT() and LEFT() in Excel to further split the vendor column to form the vendor_state, vendor_city and postcode columns.
+
