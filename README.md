@@ -35,6 +35,38 @@ ALTER TABLE greenspot
 DROP COLUMN purchase_date, 
 DROP COLUMN date_sold;
 ```
+```sql
+ALTER TABLE greenspot 
+ADD COLUMN Prices DECIMAL(10,2);
+UPDATE greenspot SET Prices = CONCAT(cost, price);
+ALTER TABLE greenspot 
+DROP COLUMN Price, 
+DROP COLUMN cost;
+```
+*Column split: The 'vendor' is splitted to form other columns. 
+```sql
+ALTER TABLE greenspot 
+ADD COLUMN vendor_name VARCHAR(15);
+UPDATE greenspot 
+SET vendor_name =
+			     (SELECT substring(vendor,1,LOCATE(',',vendor)-1))
+WHERE vendor_name IS NULL OR vendor_name = '';
+SELECT
+substring(vendor,1,LOCATE(',',vendor)-1) AS Col1
+from greenspot;
+```
+```sql
+ALTER TABLE greenspot 
+ADD COLUMN vendor_address1 VARCHAR(15);
+UPDATE greenspot 
+SET vendor_address1 =
+			    (SELECT SUBSTRING(vendor, 
+                 CASE WHEN REGEXP_INSTR(vendor, '[0-9]') > 0 THEN REGEXP_INSTR(vendor, 
+                 '[0-9]') ELSE 1 END, LOCATE(',', vendor, REGEXP_INSTR(vendor, '[0-9]')) - CASE WHEN REGEXP_INSTR(vendor, 
+                 '[0-9]') > 0 THEN REGEXP_INSTR(vendor, '[0-9]') ELSE 1 END) as extracted_address)
+WHERE vendor_address1 IS NULL OR vendor_address1 = '';
+```
+
 * Renaming columns
 ```sql
 ALTER TABLE greenspot 
