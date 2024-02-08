@@ -43,7 +43,7 @@ ALTER TABLE greenspot
 DROP COLUMN Price, 
 DROP COLUMN cost;
 ```
-*Column split: The 'vendor' is splitted to form other columns. 
+* Column split: The 'vendor' is splitted to form other columns. 
 ```sql
 ALTER TABLE greenspot 
 ADD COLUMN vendor_name VARCHAR(15);
@@ -65,6 +65,25 @@ SET vendor_address1 =
                  '[0-9]') ELSE 1 END, LOCATE(',', vendor, REGEXP_INSTR(vendor, '[0-9]')) - CASE WHEN REGEXP_INSTR(vendor, 
                  '[0-9]') > 0 THEN REGEXP_INSTR(vendor, '[0-9]') ELSE 1 END) as extracted_address)
 WHERE vendor_address1 IS NULL OR vendor_address1 = '';
+```
+* Updating Column: The empty spaces in the 'vendor' column were updated with information from other rows with same description.
+```sql
+UPDATE greenspot AS t1
+SET vendor = (
+    SELECT derived.vendor 
+    FROM (SELECT vendor, description
+		  FROM greenspot 
+	WHERE vendor IS NOT NULL) AS derived
+	WHERE derived.description = t1.description
+     LIMIT 1)
+WHERE vendor = '';
+```
+* Deletion of rows and Column: This was done to rows with no  data and columns with insignificant information.
+```sql
+ALTER TABLE greenspot
+DROP COLUMN cust; 
+DELETE FROM greenspot
+WHERE prices = 0.00;
 ```
 
 * Renaming columns
